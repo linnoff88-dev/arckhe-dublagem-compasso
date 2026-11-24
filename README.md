@@ -1,4 +1,4 @@
-﻿# dublagem-compasso
+# dublagem-compasso
 
 Dubla um vÃ­deo de **personagem falando** (gerado no Kling, Veo, Seedanceâ€¦) com uma **voz clonada local** (chatterbox), alinhando cada pedaÃ§o da fala nas **batidas da boca** â€” o "compasso" â€” em vez de sÃ³ colar uma narraÃ§Ã£o por cima.
 
@@ -46,8 +46,8 @@ OpÃ§Ãµes Ãºteis:
 
 ## Origem
 
-MÃ©todo desenvolvido e validado no projeto [klingaimcp](https://github.com/inematds/klingaimcp) (avatar falante do Kling dublado em PT-BR com voz clonada).
+MÃ©todo desenvolvido e validado no projeto [klingaimcp](https://github.com/linnoff88-dev/klingaimcp) (avatar falante do Kling dublado em PT-BR com voz clonada).
 
 ---
 
-Projeto adaptado da comunidade INEMA TDS - Marca Arckhe
+Projeto adaptado da comunidade ARCKHÉ TDS - Marca Arckhe
