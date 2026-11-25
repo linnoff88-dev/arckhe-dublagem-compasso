@@ -8,7 +8,7 @@ Método (validado no projeto klingaimcp, 2026-07):
      de fala separados por silêncio — o "compasso" da boca.
   3. Alinha o texto correto aos blocos (difflib sobre as palavras).
   4. Gera cada bloco no chatterbox (voz clonada) em múltiplas tomadas e escolhe
-     a que cabe natural na janela (ajuste fino ≤ ±20%; não coube = outra tomada).
+     a que cabe natural na janela (ajuste fino ≤ ±20%; nêo coube = outra tomada).
   5. Monta a trilha nos offsets exatos, troca o áudio (vídeo intacto) e
      VERIFICA: energia presente do início ao fim de cada janela.
 
@@ -48,10 +48,10 @@ def norm(w):
 
 def trim_sil(x, thr_ini=0.02, thr_fim=0.05):
     """Corta silêncio das pontas. O fim usa limiar mais alto (thr_fim) porque o
-    chatterbox costuma deixar um rabinho de respiração/quase-silêncio que infla
-    a duração — a fala 'termina' antes do arquivo, e o fim da janela fica mudo."""
+    chatterbox costuma deixar um rabinho de respiraçêo/quase-silêncio que infla
+    a duraçêo — a fala 'termina' antes do arquivo, e o fim da janela fica mudo."""
     e = np.abs(x)
-    # suaviza em janelas de 20ms pra não cortar em vales entre fonemas
+    # suaviza em janelas de 20ms pra nêo cortar em vales entre fonemas
     k = 480
     n = len(e) // k
     env = e[:n * k].reshape(n, k).mean(axis=1)
@@ -183,14 +183,14 @@ def main():
             dur = len(x) / SR
             tempo = dur / wdur
             tail = np.abs(x[-int(0.5 * SR):]).mean()
-            # tomada com cauda muda é REJEITADA (pen alto), não só penalizada:
+            # tomada com cauda muda é REJEITADA (pen alto), nêo só penalizada:
             # é ela que produz "boca aberta sem som" no fim da janela.
             pen = abs(tempo - 1.0) + (0 if 0.80 <= tempo <= 1.30 else 10) \
                 + (10 if tail < 0.008 else 0)
             cands.append((pen, x, dur))
             print(f"  bloco {bi} take{t + 1}: {dur:.2f}s (janela {wdur:.2f}s, tempo {tempo:.2f})")
             if pen < 0.12:
-                break  # tomada excelente, não gasta GPU à toa
+                break  # tomada excelente, nêo gasta GPU à toa
         cands.sort(key=lambda c: c[0])
         _, x, dur = cands[0]
         p = wk / f"bloco{bi}.wav"
@@ -241,7 +241,7 @@ def main():
         if not ok:
             falhas += 1
     if falhas:
-        sys.exit(f"VERIFICAÇÃO FALHOU em {falhas} janela(s) — não entregue este resultado; "
+        sys.exit(f"VERIFICAÇêO FALHOU em {falhas} janela(s) — nêo entregue este resultado; "
                  "rode de novo com mais --takes ou ajuste o texto (reticências alongam).")
     print(f"PRONTO: {args.out}")
 
